@@ -1,0 +1,26 @@
+.allOrders {
+    display: flex;
+    border: 2px solid;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.allOrders h4 {
+    margin: 2px;
+
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Цвет фона для четных строк */
+  }
+.one th {
+    background:bisque;
+    font-size: 20px;
+    padding: 3px;
+}
+.two th {
+    background:rgb(4, 123, 178);
+    color: #ffffff;
+    font-size: 16px;
+    padding: 3px;
+}
