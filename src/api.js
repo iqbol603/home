@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5001/api";
+const API_URL = "http://10.154.193.190:5001/api";
 
 // Функции для работы с клиентами
 export const getCustomers = async () => {

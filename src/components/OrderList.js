@@ -18,6 +18,7 @@ const OrderList = () => {
     fetchOrders();
   }, []);
 
+  console.log(orders);
   return (
     <div>
      
@@ -35,7 +36,7 @@ const OrderList = () => {
     </thead>
     <tbody>
       {orders.slice().reverse().map((order) => (
-        <tr key={order._id} className="myTr" >
+        <tr key={order.id} className="myTr" >
           <td> <b>{order.orderId}</b></td>
           <td> <b>{order.totalAmount}</b> TJS</td>
           <td>
@@ -49,16 +50,16 @@ const OrderList = () => {
               </thead>
               <tbody>
                 {order.products.map((item) => (
-                  <tr key={item.product._id}>
-                    <td>{item.product.name}</td>
+                  <tr key={item.id}>
+                    <td>{item.name}</td>
                     <td>{item.quantity}</td>
-                    <td>{item.product.price} TJS</td>
+                    <td>{item.price} TJS</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </td>
-          <td>{new Date(order.createdAt).toLocaleString()}</td>
+          <td>{new Date(order.orderDate).toLocaleString()}</td>
         </tr>
       ))}
     </tbody>

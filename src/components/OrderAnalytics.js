@@ -27,6 +27,8 @@ const OrderAnalytics = () => {
                 const monthlyProducts = await getMonthlyProductStats();
                 const yearlyProducts = await getYearlyProductStats();
 
+                console.log("44",dailyOrders);
+
                 setDailyStats(dailyOrders.data);
                 setMonthlyStats(monthlyOrders.data);
                 setYearlyStats(yearlyOrders.data);
@@ -67,7 +69,7 @@ const OrderAnalytics = () => {
             </tbody>
         </table>
     );
-
+console.log("111", dailyStats);
     return (
         <div>
             <h2>Аналитика по заказам</h2>
@@ -77,7 +79,7 @@ const OrderAnalytics = () => {
             {dailyStats.slice().reverse().map((stat, index) => (
                 <div key={index} className="blockStats">
                     <div className="statsData">
-                        <p>Дата: {`${stat._id.day}/${stat._id.month}/${stat._id.year}`}</p>
+                        <p>Дата: {`${stat.id.day}/${stat.id.month}/${stat.id.year}`}</p>
                         <p>Общее количество заказов: {stat.totalOrders}</p>
                         <p>Сумма продаж: {stat.totalSalesAmount} TJS</p>
                     </div>
@@ -86,9 +88,9 @@ const OrderAnalytics = () => {
                         {renderProductDetails(
                             dailyProductStats.find(
                                 (productStat) =>
-                                    productStat._id.day === stat._id.day &&
-                                    productStat._id.month === stat._id.month &&
-                                    productStat._id.year === stat._id.year
+                                    productStat.id.day === stat.id.day &&
+                                    productStat.id.month === stat.id.month &&
+                                    productStat.id.year === stat.id.year
                             )?.products || []
                         )}
                     </div>
@@ -100,7 +102,7 @@ const OrderAnalytics = () => {
             {monthlyStats.map((stat, index) => (
                 <div key={index} className="blockStats">
                     <div className="statsData">
-                        <p>Месяц: {`${stat._id.month}/${stat._id.year}`}</p>
+                        <p>Месяц: {`${stat.id.month}/${stat.id.year}`}</p>
                         <p>Общее количество заказов: {stat.totalOrders}</p>
                         <p>Сумма продаж: {stat.totalSalesAmount} TJS</p>
                     </div>
@@ -109,8 +111,8 @@ const OrderAnalytics = () => {
                         {renderProductDetails(
                             monthlyProductStats.find(
                                 (productStat) =>
-                                    productStat._id.month === stat._id.month &&
-                                    productStat._id.year === stat._id.year
+                                    productStat.id.month === stat.id.month &&
+                                    productStat.id.year === stat.id.year
                             )?.products || []
                         )}
                     </div>
@@ -122,7 +124,7 @@ const OrderAnalytics = () => {
             {yearlyStats.map((stat, index) => (
                 <div key={index} className="blockStats">
                     <div className="statsData">
-                        <p>Год: {stat._id.year}</p>
+                        <p>Год: {stat.id.year}</p>
                         <p>Общее количество заказов: {stat.totalOrders}</p>
                         <p>Сумма продаж: {stat.totalSalesAmount} TJS</p>
                     </div>
@@ -130,7 +132,7 @@ const OrderAnalytics = () => {
                         <h4>Детали продуктов:</h4>
                         {renderProductDetails(
                             yearlyProductStats.find(
-                                (productStat) => productStat._id === stat._id.year
+                                (productStat) => productStat.id === stat.id.year
                             )?.products || []
                         )}
                     </div>

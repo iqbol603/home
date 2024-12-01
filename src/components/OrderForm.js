@@ -36,10 +36,10 @@ const OrderForm = () => {
   // Обработчик клика по продукту для увеличения количества
   const handleProductClick = (product) => {
     setOrderItems((prevItems) => {
-      const currentQuantity = prevItems[product._id]?.quantity || 0;
+      const currentQuantity = prevItems[product.id]?.quantity || 0;
       return {
         ...prevItems,
-        [product._id]: {
+        [product.id]: {
           product,
           quantity: currentQuantity + 1,
         },
@@ -84,7 +84,7 @@ const OrderForm = () => {
   const handleCheckout = async () => {
     const orderData = {
       products: Object.values(orderItems).map((item) => ({
-        productId: item.product._id,
+        productId: item.product.id,
         quantity: item.quantity,
       })),
       totalAmount,
@@ -107,7 +107,7 @@ const OrderForm = () => {
       <h2>Продукты</h2>
       <div className="blockProduct">
         {products.map((product) => (
-          <div key={product._id} onClick={() => handleProductClick(product)} className="product">
+          <div key={product.id} onClick={() => handleProductClick(product)} className="product">
             <h3>{product.name}</h3>
             <p>Цена: {product.price} TJS</p>
           </div>
@@ -128,8 +128,8 @@ const OrderForm = () => {
               <p>{item.product.price} TJS</p>
               <p> {item.quantity}</p>
               <div className="quantityButtons">
-                <button className="dell" onClick={() => handleDecrease(item.product._id)}>-</button>
-                <button className="add" onClick={() => handleIncrease(item.product._id)}>+</button>
+                <button className="dell" onClick={() => handleDecrease(item.product.id)}>-</button>
+                <button className="add" onClick={() => handleIncrease(item.product.id)}>+</button>
               </div>
             </div>
           ))}
