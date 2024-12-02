@@ -7,26 +7,48 @@ import OrderList from "./components/OrderList";
 import AddProductForm from "./components/AddProductForm"; // Импорт формы для добавления продукта
 import './App.css';
 import OrderAnalytics from "./components/OrderAnalytics";
+import RegisterForm from "./components/RegisterForm";
+import LoginForm from "./components/Login";
 
 function App() {
-  const [page, setPage] = useState("order");
+  const [page, setPage] = useState("login");
 
   return (
     <div className="container">
       <h1>Miron</h1>
       
+      
       {/* Меню навигации */}
-      <nav className="nav">
-        {/* <button onClick={() => setPage("customers")}>Клиенты</button> */}
-        {/* <button onClick={() => setPage("analytics")}>Аналитика</button> */}
-        <button onClick={() => setPage("order")}>Оформить заказ</button>
-        <button onClick={() => setPage("allOrders")}>Все заказы</button> {/* Кнопка для просмотра всех заказов */}
-        <button onClick={() => setPage("products")}>Ассортимент</button> {/* Кнопка для добавления продуктов */}
-        <button onClick={() => setPage("orderStats")}>Статистика заказов</button> {/* Кнопка для добавления продуктов */}
-      </nav>
+      {page !== "login" ? (
+        <nav className="nav">
+          {/* Навигация после авторизации */}
+          <button onClick={() => setPage("order")}>Оформить заказ</button>
+          <button onClick={() => setPage("allOrders")}>Все заказы</button> {/* Кнопка для просмотра всех заказов */}
+          <button onClick={() => setPage("products")}>Ассортимент</button> {/* Кнопка для добавления продуктов */}
+          <button onClick={() => setPage("orderStats")}>Статистика заказов</button> {/* Кнопка для добавления продуктов */}
+          <button onClick={() => setPage("login")}>Выход</button> {/* Кнопка для выхода */}
+          <button onClick={() => setPage("register")}>Регистрация</button> {/* Кнопка для выхода */}
+        </nav>
+      ) : (
+        <></>
+      )}
       
       {/* Условный рендеринг страниц */}
-      {page === "order" ? (
+
+      {page === "login" && <LoginForm setPage={setPage} />}
+      {page === "register" && <RegisterForm />}
+      {page === "order" && <OrderForm />}
+      {page === "allOrders" && <OrderList />}
+      {page === "products" && <AddProductForm />}
+      {page === "orderStats" && <OrderAnalytics />}
+      {page === "customers" && <CustomerList />}
+      {page === "addCustomer" && <AddCustomer />}
+      {page === "salesAnalytics" && <SalesAnalytics />}
+      {/* {page === "login" ? (
+        < LoginForm/>
+      ) : page === "register" ? (
+        < RegisterForm/>
+      ) : page === "order" ? (
         <OrderForm />
       ) : page === "analytics" ? (
         <SalesAnalytics />
@@ -41,7 +63,7 @@ function App() {
       <OrderAnalytics/>
     ) : (
         <AddProductForm /> // Страница для добавления новых продуктов
-      )}
+      )} */}
     </div>
   );
 }

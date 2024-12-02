@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const API_URL = "http://10.154.193.190:5001/api";
+// const API_URL = "http://localhost:5001/api";
 
 // Функции для работы с клиентами
 export const getCustomers = async () => {
@@ -20,6 +21,9 @@ export const addProduct = async (product) => {
 // Получение всех заказов
 export const getOrders = async () => {
     return await axios.get(`${API_URL}/orders`);
+};
+export const LoginForm = async () => {
+    return await axios.get(`${API_URL}/auth`);
 };
 
 // Создание нового заказа
