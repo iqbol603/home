@@ -26,8 +26,8 @@ function App() {
           <button onClick={() => setPage("allOrders")}>Все заказы</button> {/* Кнопка для просмотра всех заказов */}
           <button onClick={() => setPage("products")}>Ассортимент</button> {/* Кнопка для добавления продуктов */}
           <button onClick={() => setPage("orderStats")}>Статистика заказов</button> {/* Кнопка для добавления продуктов */}
-          <button onClick={() => setPage("login")}>Выход</button> {/* Кнопка для выхода */}
-          <button onClick={() => setPage("register")}>Регистрация</button> {/* Кнопка для выхода */}
+          <button onClick={() => setPage("register")}>Создать нового пользователя</button> {/* Кнопка для выхода */}
+          <button slot="end" onClick={() => setPage("login")}>Выход</button> {/* Кнопка для выхода */}
         </nav>
       ) : (
         <></>

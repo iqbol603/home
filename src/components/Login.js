@@ -84,9 +84,6 @@ const LoginPage = ({ setPage }) => {
           {isLoading ? 'Авторизация...' : 'Войти'}
         </button>
       </form>
-      <p>
-        Нет аккаунта? <a href="#" onClick={() => setPage('register')}>Зарегистрироваться</a>
-      </p>
     </div>
   );
 };

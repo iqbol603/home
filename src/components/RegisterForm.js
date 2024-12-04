@@ -48,7 +48,7 @@ const RegisterForm = ({ setPage }) => {
 
   return (
     <div className="register-form">
-      <h2>Регистрация</h2>
+      <h2>Создать нового пользователя</h2>
       {error && <div className="error">{error}</div>}
       <form onSubmit={handleSubmit}>
         <div>
@@ -82,9 +82,6 @@ const RegisterForm = ({ setPage }) => {
           {isLoading ? 'Регистрация...' : 'Зарегистрироваться'}
         </button>
       </form>
-      <p>
-        Уже есть аккаунт? <a href="#" onClick={() => setPage('login')}>Войти</a>
-      </p>
     </div>
   );
 };
