@@ -11,13 +11,13 @@
       cursor: pointer;
 }
 .blockProduct .product h3 {
-    font-size: 25px;
+    font-size: 30px;
     margin: 10px;
 }
 
 .blockProduct .product p {
     margin: 5px; 
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 500;
  } 
 
@@ -33,12 +33,13 @@
 
  .nav button {
     margin-right: 10px;
-    font-size: 20px;
+    font-size: 24px;
     background: #20f420;
     border: none;
     border-radius: 3px;
     height: 40px;
     cursor: pointer;
+    margin-bottom: 10px;
  }
 
 
