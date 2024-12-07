@@ -1,5 +1,6 @@
 .blockProduct {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .blockProduct .product {
