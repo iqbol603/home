@@ -9,13 +9,14 @@ import './App.css';
 import OrderAnalytics from "./components/OrderAnalytics";
 import RegisterForm from "./components/RegisterForm";
 import LoginForm from "./components/Login";
-
+import logo from "./logo.jpg";
 function App() {
   const [page, setPage] = useState("login");
 
   return (
     <div className="container">
-      <h1>Miron</h1>
+      {/* <h1>Miron</h1> */}
+      <img src={logo} alt="logo" width="80px" height="30px"></img>
       
       
       {/* Меню навигации */}
