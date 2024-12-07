@@ -10,6 +10,7 @@
      margin: 10px;
       background: #ff7d0b;
       cursor: pointer;
+      max-width: 17%;
 }
 .blockProduct .product h3 {
     font-size: 30px;
