@@ -1,7 +1,16 @@
 import axios from "axios";
 
-const API_URL = "http://10.154.193.190:5001/api";
-// const API_URL = "http://localhost:5001/api";
+// const API_URL = "http://10.154.193.190:5001/api";
+const API_URL = "http://localhost:5001/api";
+
+// axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+axios.interceptors.request.use(config => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  });
 
 // Функции для работы с клиентами
 export const getCustomers = async () => {
@@ -13,15 +22,21 @@ export const getProducts = async () => {
     return await axios.get(`${API_URL}/products`);
 };
 
+export const getLocations     = async () => await axios.get(`${API_URL}/locations`);
+export const getStatsByLocation = async () => await axios.get(`${API_URL}/statistics/locations`);
+
 // Добавление нового продукта
 export const addProduct = async (product) => {
     return await axios.post(`${API_URL}/products`, product);
 };
 
+export const registerUser     = async data     => await axios.post(`${API_URL}/auth/register`, data);
+
 // Получение всех заказов
 export const getOrders = async () => {
     return await axios.get(`${API_URL}/orders`);
 };
+
 export const LoginForm = async () => {
     return await axios.get(`${API_URL}/auth`);
 };

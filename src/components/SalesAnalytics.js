@@ -13,7 +13,7 @@ const CustomerAnalytics = () => {
         const monthly = await getMonthlyCustomerStats();
         const yearly = await getYearlyCustomerStats();
 
-        setDailyStats(daily.data);
+        setDailyStats(daily.data.daily);
         setMonthlyStats(monthly.data);
         setYearlyStats(yearly.data);
       } catch (error) {

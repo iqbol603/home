@@ -9,6 +9,7 @@ import './App.css';
 import OrderAnalytics from "./components/OrderAnalytics";
 import RegisterForm from "./components/RegisterForm";
 import LoginForm from "./components/Login";
+import StatisticsByLocation from './components/StatisticsByLocation';
 import logo from "./logo.jpg";
 function App() {
   const [page, setPage] = useState("login");
@@ -27,6 +28,7 @@ function App() {
           <button onClick={() => setPage("allOrders")}>Все заказы</button> {/* Кнопка для просмотра всех заказов */}
           <button onClick={() => setPage("products")}>Ассортимент</button> {/* Кнопка для добавления продуктов */}
           <button onClick={() => setPage("orderStats")}>Статистика заказов</button> {/* Кнопка для добавления продуктов */}
+          <button onClick={() => setPage("/statistics")}>Статистика по точкам</button> {/* Кнопка для добавления продуктов */}
           <button onClick={() => setPage("register")}>Создать нового пользователя</button> {/* Кнопка для выхода */}
           <button slot="end" onClick={() => setPage("login")}>Выход</button> {/* Кнопка для выхода */}
         </nav>
@@ -45,6 +47,7 @@ function App() {
       {page === "customers" && <CustomerList />}
       {page === "addCustomer" && <AddCustomer />}
       {page === "salesAnalytics" && <SalesAnalytics />}
+      {page === "/statistics" && <StatisticsByLocation />}
       {/* {page === "login" ? (
         < LoginForm/>
       ) : page === "register" ? (
