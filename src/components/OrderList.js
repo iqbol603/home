@@ -10,6 +10,7 @@ const OrderList = () => {
       try {
         const response = await getOrders();
         setOrders(response.data);
+        // console.log(response.data);
       } catch (error) {
         console.error("Ошибка при загрузке заказов:", error);
       }
@@ -18,16 +19,29 @@ const OrderList = () => {
   }, []);
 
   // Фильтрация заказов на текущий месяц
+  // const now = new Date();
+  // const currentMonth = now.getMonth();  // 0-янв, 11-дек
+  // const currentYear = now.getFullYear();
+  // const monthlyOrders = orders.filter(order => {
+  //   const date = new Date(order.orderDate);
+  //   return (
+  //     date.getMonth() === currentMonth &&
+  //     date.getFullYear() === currentYear
+  //   );
+  // });
+  
   const now = new Date();
-  const currentMonth = now.getMonth();  // 0-янв, 11-дек
-  const currentYear = now.getFullYear();
-  const monthlyOrders = orders.filter(order => {
-    const date = new Date(order.orderDate);
-    return (
-      date.getMonth() === currentMonth &&
-      date.getFullYear() === currentYear
-    );
-  });
+const currentMonth = now.getMonth();   // 0–январь … 11–декабрь
+const currentYear  = now.getFullYear();
+
+// фильтруем только заказы этого месяца, сортируем по дате DESC и берём первые 5
+const monthlyOrders = orders
+  .filter(order => {
+    const d = new Date(order.orderDate);
+    return d.getMonth() === currentMonth && d.getFullYear() === currentYear;
+  })
+  .sort((a, b) => new Date(b.orderDate) - new Date(a.orderDate))
+  .slice(0, 5);
 
   return (
     <div>
@@ -42,7 +56,8 @@ const OrderList = () => {
           </tr>
         </thead>
         <tbody>
-          {monthlyOrders.slice().reverse().map(order => (
+          {/* {monthlyOrders.slice().reverse().map(order => ( */}
+          {monthlyOrders.map(order => (
             <tr key={order.orderId} className="myTr">
               <td><b>{order.orderId}</b></td>
               <td><b>{order.totalAmount}</b> TJS</td>
@@ -66,7 +81,9 @@ const OrderList = () => {
                   </tbody>
                 </table>
               </td>
-              <td>{new Date(order.orderDate).toLocaleString()}</td>
+              {/* <td>{new Date(order.orderDate).toLocaleString()}</td> */}
+              <td>{new Date(order.orderDate).toISOString().replace('T', ' ').slice(0, 19)}</td>
+
             </tr>
           ))}
         </tbody>

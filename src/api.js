@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const API_URL = "http://10.154.193.190:5001/api";
-const API_URL = "http://localhost:5001/api";
+const API_URL = "http://10.154.193.190:5001/api";
+// const API_URL = "http://localhost:5001/api";
 
 // axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
 axios.interceptors.request.use(config => {

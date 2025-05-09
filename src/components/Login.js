@@ -19,8 +19,8 @@ const LoginPage = ({ setPage }) => {
 
     try {
       // Отправка данных на сервер
-      // const response = await fetch('http://10.154.193.190:5001/api/auth/login', {
-      const response = await fetch('http://localhost:5001/api/auth/login', {
+      const response = await fetch('http://10.154.193.190:5001/api/auth/login', {
+      // const response = await fetch('http://localhost:5001/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ login, password }),
